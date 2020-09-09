@@ -1,7 +1,7 @@
 # README #
 
 
-## Overview [&GreaterGreater;](#getting-started) ##
+## Overview [&GreaterGreater;](#-getting-started-) ##
 
 This connector implements a batch API for manipulating the Harmony API using
 a file request/response model.
@@ -35,10 +35,9 @@ a simpified, flattened approach compared with the full JSON object schema.
 The CSV formats can be easier to work with for bulk imports, but for full access
 to all object properties the YAML/JSON format is required.
 
-## [&LessLess;](#overview) Getting Started [&GreaterGreater;](#password-generation) ##
+## [&LessLess;](#overview-) Getting Started [&GreaterGreater;](#-password-generation-) ##
 
-### Harmony Connector ###
-<span style="font-size: 60%">Harmony Connector &mdash; [Command Line](#command-line) &mdash; [Getting Started Test File](#getting-started-test-file)</span>
+### Harmony Connector [&gt;](#-command-line-)
 
 To use the Harmony Connector you must install the connector package, restart Harmony, and then configure the connector for use.
 
@@ -50,7 +49,7 @@ To use the Harmony Connector you must install the connector package, restart Har
 6. Test your new connection:<br/>&bull; In the `send` action use the single command `PUT test.yaml`<br/>&bull; create a request file `test.yaml` as shown [below](#getting-started-test-file) in your outbox directory.<br/>&bull; Run the action. You should see a `test.results.yaml` file in your working directory.
 
 
-### Command Line ###
+### [&lt;](#harmony-connector-) Command Line [&gt;](#-getting-started-test-file-)
 
 The command line package does not require installation, but simply installation
 of the prerequisites (Java 8&mdash;openjdk8 is fine on [Windows](https://access.redhat.com/documentation/en-us/openjdk/8/html/openjdk_8_for_windows_getting_started_guide/getting_started_with_openjdk_for_windows) or [Linux](https://openjdk.java.net/install/) or [Mac OS](https://github.com/AdoptOpenJDK/homebrew-openjdk)) and the executable jar
@@ -116,7 +115,7 @@ java -jar connector-batchapi-5.6-SNAPSHOT-commandline.jar -i - <<< '{"operation"
 
 You may use `-i` multiple times to supply a sequence of input files to be processed. Keep in mind that while a single input file can only be in one of the six supported formats (YAML/JSON or CSV for one of the five CSV object types), you can mix and match input file formats when using multiple  `-i`.
 
-### Getting Started Test File ###
+### [&lt;](#-command-line-) Getting Started Test File [&GreaterGreater;](#-password-generation-)
 
 Use this test file, edited as instructed, to verify your installation as described above. The expected test result file follows.
 
@@ -146,7 +145,7 @@ username: you
 
 The result attributes will vary depending on the user details recorded. Note that default values for a user are suppressed from the results file.
 
-## [Getting Started](#overview--getting-started--password-generation) &larr; Password Generation &rarr; [Configuration Reference](#password-generation--configuration-reference--next) ##
+## [&LessLess;](#-getting-started-) Password Generation [&GreaterGreater;](#-configuration-reference-) ##
 
 When creating users, an initial value for the password must be provided (whether this initial password must be reset when the user logs in for the first time is controlled by the `accept.security.passwordRules.requirePasswordResetBeforeFirstUse` property of the authenticator, identified by the `alias` in the user creation request&mdash;see the API documentation for [Authenticators (Native User)](https://developer.cleo.com/api/api-reference/post-authenticators-native-user.html)).
 
@@ -204,7 +203,7 @@ enter aes-256-cbc decryption password:
 LJBXI_99080-orpug-12738
 ```
 
-## [Password Generation](#getting-started--password-generation--configuration-reference) &larr; Configuration Reference &rarr; [Next](#configuration-reference--next) ##
+## [&LessLess;](#-password-generation-) Configuration Reference [&GreaterGreater;](#-next-) ##
 
 Command Line              | Connector         | Description
 --------------------------|-------------------|------------
@@ -219,5 +218,5 @@ Command Line              | Connector         | Description
 --remove                  |                   | Select to remove named profile (or "default")
 
 
-## [Configuration Reference](#password-generation--configuration-reference--next) &larr; Next &rarr; [More](#more) ##
+## [&LessLess;](#-configuration-reference-) Next [&GreaterGreater;](#-more-) ##
 
