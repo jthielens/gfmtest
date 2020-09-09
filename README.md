@@ -1,7 +1,7 @@
 # README #
 
 
-## <a href="#overview"></a>Overview &rarr; <span style="font-size: 60%">[Getting Started](#getting-started)</span> ##
+## Overview &rarr; [Getting Started](#overview--getting-started--password-generation) ##
 
 This connector implements a batch API for manipulating the Harmony API using
 a file request/response model.
@@ -35,9 +35,9 @@ a simpified, flattened approach compared with the full JSON object schema.
 The CSV formats can be easier to work with for bulk imports, but for full access
 to all object properties the YAML/JSON format is required.
 
-## <a href="#getting-started"></a><span style="font-size: 60%">[Overview](#overview)</span> &larr; Getting Started &rarr; <span style="font-size: 60%">[Password Generation](#password-generation) </span> ##
+## [Overview](#overview) &larr; Getting Started &rarr; [Password Generation](#password-generation) ##
 
-### Harmony Connector &mdash; <span style="font-size: 60%">[Command Line](#command-line)</span> &mdash; <span style="font-size: 60%">[Getting Started Test File](#getting-started-test-file)</span>###
+### Harmony Connector &mdash; [Command Line](#command-line) &mdash; [Getting Started Test File](#getting-started-test-file) ###
 
 To use the Harmony Connector you must install the connector package, restart Harmony, and then configure the connector for use.
 
@@ -145,7 +145,7 @@ username: you
 
 The result attributes will vary depending on the user details recorded. Note that default values for a user are suppressed from the results file.
 
-##<a href="#password-generation"></a><span style="font-size: 60%">[Getting Started](#getting-started)</span> &larr; Password Generation &rarr; <span style="font-size: 60%">[Configuration Reference](#configuration-reference) </span>##
+## [Getting Started](#getting-started) &larr; Password Generation &rarr; [Configuration Reference](#configuration-reference) ##
 
 When creating users, an initial value for the password must be provided (whether this initial password must be reset when the user logs in for the first time is controlled by the `accept.security.passwordRules.requirePasswordResetBeforeFirstUse` property of the authenticator, identified by the `alias` in the user creation request&mdash;see the API documentation for [Authenticators (Native User)](https://developer.cleo.com/api/api-reference/post-authenticators-native-user.html)).
 
@@ -203,7 +203,7 @@ enter aes-256-cbc decryption password:
 LJBXI_99080-orpug-12738
 ```
 
-##<a href="#configuraiton-reference"></a><span style="font-size: 60%">[Password Generation](#password-generation)</span> &larr; Configuration Reference &rarr; <span style="font-size: 60%">[Next](#next) </span>##
+## [Password Generation](#password-generation) &larr; Configuration Reference &rarr; [Next](#next) ##
 
 Command Line              | Connector         | Description
 --------------------------|-------------------|------------
