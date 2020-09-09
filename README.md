@@ -1,7 +1,7 @@
 # README #
 
 
-## Overview &rarr; [Getting Started](#overview--getting-started--password-generation) ##
+## Overview [&GreaterGreater;](#getting-started) ##
 
 This connector implements a batch API for manipulating the Harmony API using
 a file request/response model.
@@ -35,9 +35,10 @@ a simpified, flattened approach compared with the full JSON object schema.
 The CSV formats can be easier to work with for bulk imports, but for full access
 to all object properties the YAML/JSON format is required.
 
-## [Overview](#overview--getting-started) &larr; Getting Started &rarr; [Password Generation](#getting-started--password-generation--configuration-reference) ##
+## [&LessLess;](#overview) Getting Started [&GreaterGreater;](#password-generation) ##
 
-### Harmony Connector &mdash; [Command Line](#command-line) &mdash; [Getting Started Test File](#getting-started-test-file) ###
+### Harmony Connector ###
+<span style="font-size: 60%">Harmony Connector &mdash; [Command Line](#command-line) &mdash; [Getting Started Test File](#getting-started-test-file)</span>
 
 To use the Harmony Connector you must install the connector package, restart Harmony, and then configure the connector for use.
 
@@ -219,3 +220,4 @@ Command Line              | Connector         | Description
 
 
 ## [Configuration Reference](#password-generation--configuration-reference--next) &larr; Next &rarr; [More](#more) ##
+
