@@ -35,7 +35,7 @@ a simpified, flattened approach compared with the full JSON object schema.
 The CSV formats can be easier to work with for bulk imports, but for full access
 to all object properties the YAML/JSON format is required.
 
-## [Overview](#overview) &larr; Getting Started &rarr; [Password Generation](#password-generation) ##
+## [Overview](#overview--getting-started) &larr; Getting Started &rarr; [Password Generation](#getting-started--password-generation--configuration-reference) ##
 
 ### Harmony Connector &mdash; [Command Line](#command-line) &mdash; [Getting Started Test File](#getting-started-test-file) ###
 
@@ -145,7 +145,7 @@ username: you
 
 The result attributes will vary depending on the user details recorded. Note that default values for a user are suppressed from the results file.
 
-## [Getting Started](#getting-started) &larr; Password Generation &rarr; [Configuration Reference](#configuration-reference) ##
+## [Getting Started](#overview--getting-started--password-generation) &larr; Password Generation &rarr; [Configuration Reference](#password-generation--configuration-reference--next) ##
 
 When creating users, an initial value for the password must be provided (whether this initial password must be reset when the user logs in for the first time is controlled by the `accept.security.passwordRules.requirePasswordResetBeforeFirstUse` property of the authenticator, identified by the `alias` in the user creation request&mdash;see the API documentation for [Authenticators (Native User)](https://developer.cleo.com/api/api-reference/post-authenticators-native-user.html)).
 
@@ -203,7 +203,7 @@ enter aes-256-cbc decryption password:
 LJBXI_99080-orpug-12738
 ```
 
-## [Password Generation](#password-generation) &larr; Configuration Reference &rarr; [Next](#next) ##
+## [Password Generation](#getting-started--password-generation--configuration-reference) &larr; Configuration Reference &rarr; [Next](#configuration-reference--next) ##
 
 Command Line              | Connector         | Description
 --------------------------|-------------------|------------
@@ -216,3 +216,6 @@ Command Line              | Connector         | Description
 --profile <PROFILE>       |                   | The named profile to load instead of "default"
 --save                    |                   | Select to create/update named profile (or "default")
 --remove                  |                   | Select to remove named profile (or "default")
+
+
+## [Configuration Reference](#password-generation--configuration-reference--next) &larr; Next &rarr; [More](#more) ##
