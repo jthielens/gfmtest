@@ -70,6 +70,7 @@ usage: com.cleo.labs.connector.batchapi.processor.Main
     --export-pass <PASSWORD>   Password to encrypt generated passwords
     --operation <OPERATION>    default operation: list, add, update, delete
     --include-defaults         include all default values when listing connections
+    --template <TEMPLATE>      load CSV file using provided template
     --profile <PROFILE>        Connection profile to use
     --save                     Save/update profile
     --remove                   Remove profile
@@ -218,19 +219,21 @@ Command Line              | Connector         | Description
 --url <URL>               | Url               | The Harmony URL, e.g. `https://localhost:6080`
 -u, --username <USERNAME> | User              | The user authorized to use the Harmony API
 -p, --password <PASSWORD> | Password          | The user's password
+-i, --input <FILE>        | `PUT` file        | input file YAML, JSON or CSV
 --generate-pass           | Generate Password | Select to enable password generation for created users
 --export-pass <PASSWORD>  | Export Password   | Password used to encrypt generated passwords in the results file
 --operation <OPERATION>   | Default Operation | The default operation for entries lacking an explicit "operation"
 -k, --insecure            | Ignore TLS Checks | Select to bypass TLS hostname and trusted issuer checks
---profile <PROFILE>       |                   | The named profile to load instead of "default"
---include-defaults        |                   | Include all default values when listing connections
---save                    |                   | Select to create/update named profile (or "default")
---remove                  |                   | Select to remove named profile (or "default")
+--profile <PROFILE>       | &nbsp;            | The named profile to load instead of "default"
+--include-defaults        | &nbsp;            | Include all default values when listing connections
+--template <TEMPLATE>     | &nbsp;            | load CSV file using provided template
+--save                    | &nbsp;            | Select to create/update named profile (or "default")
+--remove                  | &nbsp;            | Select to remove named profile (or "default")
 
 
-## [&LessLess;](#-configuration-reference-) Request Processing [&GreaterGreater;](#-csv-files) ##
+## [&LessLess;](#-configuration-reference-) Request Processing [&GreaterGreater;](#-csv-files-and-templates) ##
 
-### Requests [&gt;](-results-)
+### Requests [&gt;](#-results-)
 
 Regardless of the input format (YAML/JSON or CSV), the input file is processed as a sequence of requests.
 Each request has an _operation_ and an _object type_ to operate on.
@@ -458,11 +461,76 @@ In order to delete an existing action, create an action with the matching `alias
       - # other commands here
 ```
 
-### [&lt;](#-action-handling-) Certificate Handling [&gt;](-csv-files)
+### [&lt;](#-action-handling-) Certificate Handling [&gt;](#-csv-files-and-templates)
 
 Like actions, certificates in the native Harmony API are handled as a separate linked resource.
 
 The batch utility will be updated to handle certificates as nested objects, but today certificates must be handled outside of the utility.
 
-## [&LessLess;](#-request-processing-) CSV Files
+## [&LessLess;](#-request-processing-) CSV Files and Templates
 
+In many cases involving batch operations, most parts of each request, or at least the request skeleton, are the same.
+The detais for each request can then conveniently be represented in tabular form.
+
+The batch utility supports this mode of operation using CSV files for the tabular data and templates in YAML format.
+The CSV file must have a header, which defines replacement token names for the columns of the table.
+The YAML template encodes requests, much as illustrated above, but with replacement tokens that fill in values from the CSV file, using the replacement token names from the CSV header.
+
+For example, a simple `add` user request:
+
+```
+---
+- username: alice
+  password: password
+  email: alice@cleo.demo
+  authenticator: Users
+```
+
+could be generalized with replacement tokens for username, password, and email with a CSV file:
+
+```
+user,pass,email
+alice,password,alice@cleo.demo
+bob,password,bob@cleo.demo
+```
+
+against the template:
+
+```
+---
+- username: ${user}
+  password: ${pass}
+  email: ${email}
+  authenticator: Users
+```
+
+resulting in the same effect as the following explicit YAML request file:
+
+```
+---
+- username: alice
+  password: password
+  email: alice@cleo.demo
+  authenticator: Users
+- username: bob
+  password: password
+  email: bob@cleo.demo
+  authenticator: Users
+```
+
+Provide a template using the `--template` command line option and `--input` for the CSV file.
+
+### Built-in templates
+
+If you provide a CSV file for `--input` and do not provide an explicit `--template`, the batch utility will attempt to use one of its built-in templates based on an analysis of the content:
+
+* files with a `UserAlias` column in the header use the `authenticator` template
+* files without a `type` column in the header use the `user` template
+* files with a `type` column whose data values are all `as2` use the `as2` template
+* files with a `type` column whose data values are all `sftp` use the `sftp` template
+* files with a `type` column whose data values are all `ftp` use the `ftp` template
+* files with a `type` column whose data values are not all the same cause an error
+
+
+
+Built-in templates can be used for only a single object type per file and a single request per row. You can construct your own templates that can use conditionals and token expressions to create multiple object types from a single CSV, or can create multiple requests per row.
